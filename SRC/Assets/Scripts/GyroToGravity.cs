@@ -16,7 +16,7 @@ public class GyroToGravity : MonoBehaviour {
 
 
 	private ETestSwitchVar _currentType;
-	private float _offset = 0f;
+	private float _offset = 90f;
 
 	private void Update()
 	{
@@ -34,11 +34,11 @@ public class GyroToGravity : MonoBehaviour {
 			dir.Normalize();
 			var angle = Mathf.Atan2(dir.y, dir.x);
 
-			_newGravity = vecBase.Rotate(angle * Mathf.Rad2Deg + _offset) * GravityForce;
+			_newGravity = vecBase.Rotate(angle * Mathf.Rad2Deg + _offset) * GravityForce * magnitude;
 			Physics2D.gravity = _newGravity;
 		}
 	}
-
+	/*
 	public void OnGUI()
 	{
 		var width = (Screen.width - 20) / 3f;
@@ -53,7 +53,7 @@ public class GyroToGravity : MonoBehaviour {
 			_currentType = (ETestSwitchVar)(((int)_currentType + 1) % 3);
 		}
 	}
-
+	*/
 }
 
 public static class VectorExt
