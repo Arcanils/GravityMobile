@@ -10,8 +10,6 @@ public class GameplayManager : MonoBehaviour {
 	public Cinemachine.CinemachineVirtualCamera Cam;
 
 
-	public static int LevelIndex = 1;
-
 	private Transform _startAnchor;
 	private GameObject _player;
 
@@ -23,7 +21,7 @@ public class GameplayManager : MonoBehaviour {
 
 	public IEnumerator InitGameplay()
 	{
-		SceneManager.LoadScene(LevelIndex, LoadSceneMode.Additive);
+		SceneManager.LoadScene(UIMain.GlobalParamSet + 2, LoadSceneMode.Additive);
 		yield return null;
 		var triggers = FindObjectsOfType<Trigger>();
 		var start = triggers.FirstOrDefault(item => item.Type == Trigger.ETriggerType.START);
@@ -54,7 +52,6 @@ public class GameplayManager : MonoBehaviour {
 
 	public void FinishGame()
 	{
-		LevelIndex = Mathf.Clamp(LevelIndex + 1, 1, 5);
 		SceneManager.LoadScene(0, LoadSceneMode.Single);
 	}
 

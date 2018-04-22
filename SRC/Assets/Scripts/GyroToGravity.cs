@@ -34,22 +34,6 @@ public class GyroToGravity : MonoBehaviour {
 		Physics2D.gravity = _newGravity;
 		TextDebug.text = Input.acceleration + " " + _newGravity;
 	}
-	public void OnGUI()
-	{
-		var width = (Screen.width - 20) / 3f;
-		var height = Screen.height / 8f;
-		//GUI.Label(new Rect(10, 10, width, height), Input.acceleration + " " +  _newGravity);
-		if (GUI.Button(new Rect(0, 10, width, height), "Add degre"))
-		{
-			_offset = (_offset + 90f) % 360f;
-		}
-		/*
-		if (GUI.Button(new Rect(10 + 2 * width, 10, width, height), "Switch Var : " + _currentType.ToString()))
-		{
-			_currentType = (ETestSwitchVar)(((int)_currentType + 1) % 3);
-		}
-		*/
-	}
 }
 
 public static class VectorExt
